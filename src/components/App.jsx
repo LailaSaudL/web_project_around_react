@@ -1,11 +1,15 @@
 import React from "react";
 import logo from "./images/logo.svg";   // logo
 import avatar from "./images/avatar.jpg"; // avatar
-import "./App.css"; // estilos globales
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
+import "./App.css";
 
 function App() {
   return (
     <div className="page__content">
+         <Header/>
       <header className="header page__section">
         <img
           src={logo}
@@ -21,6 +25,8 @@ function App() {
           className="profile__avatar"
         />
       </section>
+       <Main/>
+      <Footer/>
     </div>
   );
 }
