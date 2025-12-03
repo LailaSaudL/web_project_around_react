@@ -42,10 +42,3 @@ export default function EditAvatar() {
     </form>
   );
 }
-
-      <button className="button popup__button" type="submit">
-        Guardar
-      </button>
-    </form>
-  );
-}
