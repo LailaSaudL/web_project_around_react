@@ -3,7 +3,7 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import api from "./utils/api";
-import CurrentUserContext from "./contexts/CurrentUserContext";
+import CurrentUserContext from "./contexts/CurrentUserContext.js";
 
 function App() {
   // Estados principales
