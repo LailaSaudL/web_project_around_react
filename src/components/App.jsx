@@ -1,9 +1,11 @@
+// /src/components/App.jsx
+
 import { useEffect, useState } from "react";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
-import api from "./utils/api";
-import CurrentUserContext from "./contexts/CurrentUserContext.js";
+import Header from "./Header/Header";
+import Main from "./Main/Main";
+import Footer from "./Footer/Footer";
+import api from "../utils/api";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function App() {
   // Estados principales
@@ -13,14 +15,12 @@ function App() {
 
   // Cargar datos iniciales al montar el componente
   useEffect(() => {
-    // Obtener información del usuario
     api.getUserInfo()
       .then((userData) => {
         setCurrentUser(userData);
       })
       .catch((error) => console.error("Error al obtener usuario:", error));
 
-    // Obtener tarjetas
     api.getInitialCards()
       .then((cardsData) => {
         setCards(cardsData);
@@ -28,7 +28,6 @@ function App() {
       .catch((error) => console.error("Error al obtener tarjetas:", error));
   }, []);
 
-  // Handlers para popups
   function handleOpenPopup(popupData) {
     setPopup(popupData);
   }
@@ -37,7 +36,6 @@ function App() {
     setPopup(null);
   }
 
-  // Handler para actualizar perfil
   function handleUpdateUser(data) {
     api.setUserInfo(data)
       .then((newUserData) => {
@@ -47,7 +45,6 @@ function App() {
       .catch((error) => console.error("Error al actualizar perfil:", error));
   }
 
-  // Handler para actualizar avatar
   function handleUpdateAvatar(data) {
     api.setUserAvatar(data)
       .then((newUserData) => {
@@ -57,10 +54,8 @@ function App() {
       .catch((error) => console.error("Error al actualizar avatar:", error));
   }
 
-  // Handler para dar/quitar like
   async function handleCardLike(card) {
     const isLiked = card.isLiked;
-
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) =>
@@ -72,7 +67,6 @@ function App() {
       .catch((error) => console.error("Error al cambiar like:", error));
   }
 
-  // Handler para eliminar tarjeta
   function handleCardDelete(card) {
     api.deleteCard(card._id)
       .then(() => {
@@ -83,7 +77,6 @@ function App() {
       .catch((error) => console.error("Error al eliminar tarjeta:", error));
   }
 
-  // Handler para agregar nueva tarjeta
   function handleAddPlaceSubmit(data) {
     api.addCard(data)
       .then((newCard) => {
